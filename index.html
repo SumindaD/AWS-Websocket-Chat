@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AWS Websockets</title>
+</head>
+<body>
+    
+</body>
+
+<input id="webSocketConnection" type="text" size="80" value="wss://p2ygx6cbhk.execute-api.eu-west-1.amazonaws.com/ws"><br/><br/>
+<input id="messageInput" type="text" size="80" placeholder="Enter message to send"><br/><br/>
+<button id="connectToWebSocketButton" onclick="connectToWebSocket()">Connect</button> <button id="disconnectButton" onclick="disconnect()">Disconnect</button> <button id="sendMessageButton" onclick="sendMessage()">Send</button><br/>
+<p id="socketState"></p>
+
+Socket Messages:
+<p id="messages"></p>   
+
+<script>
+
+    document.getElementById("disconnectButton").disabled = true;
+    document.getElementById("sendMessageButton").disabled = true;
+    document.getElementById("socketState").innerHTML = 'Connection Closed';
+
+    webSocketConnection = document.getElementById("webSocketConnection").value;
+
+    var socket = null;
+    
+    function sendMessage(){
+        payload = { "action": "onMessage", "message": document.getElementById("messageInput").value };
+
+        socket.send(JSON.stringify(payload));
+    }
+
+    function connectToWebSocket(){
+        socket = new WebSocket(webSocketConnection);
+
+        socket.onopen = function(event) {
+            document.getElementById("socketState").innerHTML = 'Connection Open';
+
+            document.getElementById("connectToWebSocketButton").disabled = true;
+            document.getElementById("disconnectButton").disabled = false;
+            document.getElementById("sendMessageButton").disabled = false;
+        };
+
+        socket.onmessage = function(event) {
+            document.getElementById("messages").innerHTML += event.data + '<br/>'
+        };
+
+        socket.onerror = function(event) {
+            console.error("WebSocket error observed:", event);
+            document.getElementById("socketState").innerHTML = 'Connection Error';
+        };
+
+        socket.onclose = function(event) {
+            document.getElementById("socketState").innerHTML = 'Connection Closed';
+
+            document.getElementById("connectToWebSocketButton").disabled = false;
+            document.getElementById("disconnectButton").disabled = true;
+            document.getElementById("sendMessageButton").disabled = true;
+        };
+    }
+
+    function disconnect(){
+        socket.close();
+    }
+</script>
+
+</html>
