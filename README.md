@@ -1,4 +1,4 @@
-# HAnalytics OCR
+# AWS Websocket Messaging
 
 > This repo contains Serverless Framework project for a simple AWS Websocket chat app
 
