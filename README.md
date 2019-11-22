@@ -22,6 +22,13 @@ $ npm install -g serverless@1.48.2
 $ pip install -r python-packages.txt -t ./lib/python
 ```
 
+> Install required serverless plugins
+
+```shell
+$ npm install serverless-pseudo-parameters
+```
+
+
 > Deploy into AWS
 
 ```shell
