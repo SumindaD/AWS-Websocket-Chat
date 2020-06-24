@@ -1,9 +1,9 @@
 service: awswebsocketchat
-frameworkVersion: "1.48.2"
+frameworkVersion: "1.73.1"
 
 custom:
   currentStage: ${opt:stage, self:provider.stage}
-  lambdaRunTime: python3.7
+  lambdaRunTime: python3.8
   socketConnectionsTableName: socketConnections-#{AWS::AccountId}-${self:custom.currentStage}
 
 provider:
@@ -17,7 +17,6 @@ provider:
 
 plugins:
   - serverless-pseudo-parameters
-
 package:
   individually: true
   exclude:
