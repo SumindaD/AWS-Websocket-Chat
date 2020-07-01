@@ -27,6 +27,7 @@ $ pip install -r python-packages.txt -t ./lib/python
 $ sls plugin install -n serverless-pseudo-parameters
 ```
 
+=======
 > Deploy into AWS
 
 ```shell
