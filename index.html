@@ -24,7 +24,6 @@ Socket Messages:
     document.getElementById("sendMessageButton").disabled = true;
     document.getElementById("socketState").innerHTML = 'Connection Closed';
 
-    webSocketConnection = document.getElementById("webSocketConnection").value;
 
     var socket = null;
     
@@ -35,6 +34,8 @@ Socket Messages:
     }
 
     function connectToWebSocket(){
+        
+        webSocketConnection = document.getElementById("webSocketConnection").value;
         socket = new WebSocket(webSocketConnection);
 
         socket.onopen = function(event) {
