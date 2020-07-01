@@ -24,7 +24,6 @@ Socket Messages:
     document.getElementById("sendMessageButton").disabled = true;
     document.getElementById("socketState").innerHTML = 'Connection Closed';
 
-
     var socket = null;
     
     function sendMessage(){
@@ -34,7 +33,6 @@ Socket Messages:
     }
 
     function connectToWebSocket(){
-        
         webSocketConnection = document.getElementById("webSocketConnection").value;
         socket = new WebSocket(webSocketConnection);
 

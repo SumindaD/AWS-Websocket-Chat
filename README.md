@@ -23,12 +23,11 @@ $ pip install -r python-packages.txt -t ./lib/python
 ```
 
 > Install required serverless plugins
-
 ```shell
-$ npm install serverless-pseudo-parameters
+$ sls plugin install -n serverless-pseudo-parameters
 ```
 
-
+=======
 > Deploy into AWS
 
 ```shell
