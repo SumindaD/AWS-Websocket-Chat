@@ -13,7 +13,7 @@ $ npm install
 > Install Serverless Framework globally
 
 ```shell
-$ npm install -g serverless@1.48.2
+$ npm install -g serverless@1.73.1
 ```
 
 > Install required Python packages
@@ -24,7 +24,7 @@ $ pip install -r python-packages.txt -t ./lib/python
 
 > Install required serverless plugins
 ```shell
-$ sls plugin install -n serverless-pseudo-parameters
+$ serverless plugin install -n serverless-pseudo-parameters
 ```
 
 > Deploy into AWS
